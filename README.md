@@ -1,2 +1,3 @@
-½â¾öÁËsingleNumberµÄËã·¨ÎÊÌâ
 # Algorithm
+è§£å†³äº†singleNumberçš„é—®é¢˜
+2015.1.13 1:01 æ­£åœ¨è§£å†³Two Sumé—®é¢˜

@@ -1,19 +1,22 @@
 package solution;
 
+/**
+ * this class include the singleNumber solutionï¼ŒTwoSum solution
+ * */
 public class Solution {
 
 	/**
-	 * Given an array of integers, every element appears twice except for one.
-	 * Find that single one.
+	 * <b>é—®é¢˜æè¿°</b> Given an array of integers, every element appears twice
+	 * except for one. Find that single one.
 	 * 
-	 * Note:
-	 * Your algorithm should have a linear runtime complexity. Could you
+	 * Note: Your algorithm should have a linear runtime complexity. Could you
 	 * implement it without using extra memory?
 	 * 
-	 * @param A is an array of integers,every element appears twice except for one.
+	 * @param A
+	 *            is an array of integers,every element appears twice except for
+	 *            one.
 	 * @return the single integer
-	 * @
-	 * ½â¾ö°ì·¨ÊÇÍ¨¹ıÒì»òÔËËãµÄ·¨Ôò£¬ÏàÍ¬ÎªÁã£¬²»Í¬ÎªÒ»£»ÓëÁãÒì»òÊÇÔ­À´µÄÊıµÄ¹æÂÉ
+	 * @category è§£å†³åŠæ³•æ˜¯é€šè¿‡å¼‚æˆ–è¿ç®—çš„æ³•åˆ™ï¼Œç›¸åŒä¸ºé›¶ï¼Œä¸åŒä¸ºä¸€ï¼›ä¸é›¶å¼‚æˆ–æ˜¯åŸæ¥çš„æ•°çš„è§„å¾‹
 	 * */
 	public int singleNumber(int[] A) {
 		if (A == null || A.length == 0) {
@@ -25,5 +28,36 @@ public class Solution {
 			result = result ^ A[i];
 		}
 		return result;
+	}
+
+	/**
+	 * <b>é—®é¢˜æè¿°</b> Given an array of integers, find two numbers such that they
+	 * add up to a specific target number.
+	 * 
+	 * Note: Your algorithm should have a linear runtime complexity. Could you
+	 * implement it without using extra memory?
+	 * 
+	 * @param numbers
+	 *            is an array of integers
+	 * @param target
+	 *            is the target number
+	 * @return two indexes of number which sum equal to the target
+	 * 
+	 * */
+	public int[] twoSum(int[] numbers, int target) {
+		int index[] = new int[2];
+		int temp1, temp2;
+		for (int i = 0; i < numbers.length; i++) {
+			temp1 = numbers[i];
+			for (int j = i + 1; j < numbers.length; j++) {
+				temp2 = numbers[j];
+				if ((temp1 + temp2) == target) {
+					index[0] = i + 1;
+					index[1] = j + 1;
+					return index;
+				}
+			}
+		}
+		return index;
 	}
 }

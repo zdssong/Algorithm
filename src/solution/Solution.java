@@ -1,5 +1,8 @@
 package solution;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * this class include the singleNumber solution，TwoSum solution
  * */
@@ -45,19 +48,50 @@ public class Solution {
 	 * 
 	 * */
 	public int[] twoSum(int[] numbers, int target) {
-		int index[] = new int[2];
-		int temp1, temp2;
-		for (int i = 0; i < numbers.length; i++) {
-			temp1 = numbers[i];
-			for (int j = i + 1; j < numbers.length; j++) {
-				temp2 = numbers[j];
-				if ((temp1 + temp2) == target) {
-					index[0] = i + 1;
-					index[1] = j + 1;
-					return index;
-				}
+		int l = 0, r = numbers.length - 1;
+		int indexes[] = new int[2];
+		int x = numbers[0];
+		while (l < r) {
+			while (l < r && numbers[r] >= x)
+				r--;
+			if (l < r) {
+				numbers[l] = numbers[r];
+				x = numbers[r];
+			}
+			while (l < r && numbers[l] <= x)
+				l++;
+			if (l < r) {
+				numbers[r] = numbers[l];
+				x = numbers[l];
 			}
 		}
-		return index;
+		numbers[l] = x;
+		for (int i = 0, j = numbers.length - 1; i < j;) {
+			if (numbers[i] + numbers[j] > target) {
+				j--;
+				continue;
+			}
+			if (numbers[i] + numbers[j] < target) {
+				i++;
+				continue;
+			}
+			if (numbers[i] + numbers[j] == target) {
+				indexes[0] = i + 1;
+				indexes[1] = j + 1;
+			}
+		}
+		return indexes;
+	}
+	
+	public int[] twoSum1(int[] numbers, int target){
+		int indexes[] = new int[2];
+		List<Integer> list = new ArrayList<>();
+		list.add(numbers[0]);
+		for(int i = 1;i<numbers.length;i++){
+			if(list.contains(target-numbers[i])){
+				
+			}
+		}
+		return indexes;
 	}
 }

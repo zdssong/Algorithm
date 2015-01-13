@@ -18,19 +18,9 @@ import java.util.List;
  * 
  * */
 public class TwoSum {
+
 	/**
-	 * <b>问题描述</b> Given an array of integers, find two numbers such that they
-	 * add up to a specific target number.
-	 * 
-	 * Note: Your algorithm should have a linear runtime complexity. Could you
-	 * implement it without using extra memory?
-	 * 
-	 * @param numbers
-	 *            is an array of integers
-	 * @param target
-	 *            is the target number
-	 * @return two indexes of number which sum equal to the target
-	 * 
+	 * the first try,use the most simple solution fail because of time out
 	 * */
 	public int[] twoSum(int[] numbers, int target) {
 		int indexes[] = new int[2];
@@ -45,25 +35,14 @@ public class TwoSum {
 		return indexes;
 	}
 
+	/**
+	 * The second try,sort the array first ,then find The two number;
+	 * but will occur Time Limit Exceeded
+	 * I don't understand
+	 * */
 	public int[] twoSum1(int[] numbers, int target) {
-		int l = 0, r = numbers.length - 1;
 		int indexes[] = new int[2];
-		int x = numbers[0];
-		while (l < r) {
-			while (l < r && numbers[r] >= x)
-				r--;
-			if (l < r) {
-				numbers[l] = numbers[r];
-				x = numbers[r];
-			}
-			while (l < r && numbers[l] <= x)
-				l++;
-			if (l < r) {
-				numbers[r] = numbers[l];
-				x = numbers[l];
-			}
-		}
-		numbers[l] = x;
+		quickSort(numbers, 0, numbers.length - 1);
 		for (int i = 0, j = numbers.length - 1; i < j;) {
 			if (numbers[i] + numbers[j] > target) {
 				j--;
@@ -81,6 +60,32 @@ public class TwoSum {
 		return indexes;
 	}
 
+	private void quickSort(int[] numbers, int l, int r) {
+		int x = numbers[l];
+		if (l < r) {
+			int i = l;
+			int j = r;
+			while (i < j) {
+				while (i < j && numbers[j] >= x)
+					j--;
+				if (i < j) {
+					numbers[i++] = numbers[j];
+				}
+				while (i < j && numbers[i] <= x)
+					i++;
+				if (i < j) {
+					numbers[j++] = numbers[i];
+				}
+			}
+			numbers[i] = x;
+			quickSort(numbers, l, i - 1);
+			quickSort(numbers, i + 1, r);
+		}
+	}
+
+	/**
+	 * use the list to handle the array,to do the sort the array
+	 * */
 	public int[] twoSum2(int[] numbers, int target) {
 		int indexes[] = new int[2];
 		List<Integer> list = new ArrayList<>();

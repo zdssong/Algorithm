@@ -48,26 +48,26 @@ public class LRUCache {
 	/**
 	 * 编译不通过，因为当capacity很大的时候，超过了时间限制
 	 * */
-	private void changeOrderUseList(int key) {
-		int position = 0;
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i) == key)
-				position = i;
-		}
-		for (int i = position; i >= 1; i--) {
-			list.set(i, list.get(i - 1));
-		}
-		list.set(0, key);
-	}
+//	private void changeOrderUseList(int key) {
+//		int position = 0;
+//		for (int i = 0; i < list.size(); i++) {
+//			if (list.get(i) == key)
+//				position = i;
+//		}
+//		for (int i = position; i >= 1; i--) {
+//			list.set(i, list.get(i - 1));
+//		}
+//		list.set(0, key);
+//	}
 
 	/**
 	 * 经过了优化，但是在编译时还是超时了
 	 * */
-	private void changeOrderWithPositionUseList(int key, int position) {
-		for (int i = position; i >= 1; i--) {
-			list.set(i, list.get(i - 1));
-		}
-		list.set(0, key);
-	}
+//	private void changeOrderWithPositionUseList(int key, int position) {
+//		for (int i = position; i >= 1; i--) {
+//			list.set(i, list.get(i - 1));
+//		}
+//		list.set(0, key);
+//	}
 
 }

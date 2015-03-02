@@ -1,10 +1,11 @@
 package algorithm;
 
+import easy.PalindromeNumber;
+
 public class Main {
 
 	public static void main(String[] arg) {
-		System.out.println(Math.pow(27, 2));
-		System.out.println(27 * 27);
+		System.out.println(PalindromeNumber.isPalindrome(1));
 	}
 
 }
